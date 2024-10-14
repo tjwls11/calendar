@@ -1,0 +1,251 @@
+body {
+  background-color: #fffbe6;
+}
+
+/* 캘린더 컨테이너 */
+.calendar-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  position: relative;
+}
+
+/* 전체 캘린더 */
+.calendar {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* 캘린더 내용이 넘칠 경우 숨기기 */
+}
+
+/* 헤더 섹션 */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+}
+
+/* 요일 헤더 */
+.days {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.65em;
+  padding: 5px;
+  color: #fffbe6;
+  background-color: rgb(87, 140, 111);
+}
+
+.days .col {
+  width: 14%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+}
+
+/* 날짜 셀 */
+.body .row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.body .col {
+  width: 14%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8em;
+  border-radius: 3px;
+  background: #fffbe6;
+  margin: 2px;
+}
+
+/* 년도와 월을 감싸는 컨테이너 */
+.month-year-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.month-year {
+  font-weight: 600;
+  font-size: 1.2em;
+  cursor: pointer;
+  color: #0d4225;
+}
+
+.month-year-input {
+  width: 65px;
+  height: 30px;
+  font-size: 1em;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 이동 버튼 */
+.prev-button,
+.next-button {
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: #0d4225;
+}
+
+/* 색상 선택기 컨테이너 */
+.color-picker {
+  display: flex;
+  gap: 5px;
+  position: fixed;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #0d4225;
+}
+
+/* 셀 스타일 */
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.cell.disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.cell.selected {
+  border: 2px solid #0d4225;
+}
+
+.cell.valid {
+  background-color: #fffbe6;
+}
+
+/* 사이드바 스타일 */
+.sidebar {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease,
+    box-shadow 0.3s ease, border-radius 0.3s ease;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.sidebar.open {
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  color: #0d4225;
+}
+
+.sidebar.closed {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #0d4225;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.sidebar.open .sidebar-content {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar.closed .sidebar-content {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* 아이콘 스타일 */
+.sidebar-icon {
+  font-size: 24px;
+  color: #0d4225;
+  transition: opacity 0.3s ease;
+}
+
+/* 버튼 스타일 */
+.sidebar-button {
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+/* 닫기 버튼 */
+.close-button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  margin-bottom: 10px;
+}
+
+/* 연간 달력 보기 스타일 */
+.yearly-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.months-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.month-box {
+  width: 200px;
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
